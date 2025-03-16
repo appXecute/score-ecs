@@ -33,12 +33,12 @@ import (
 	"github.com/spf13/cobra"
 	"gopkg.in/yaml.v3"
 
-	"github.com/score-spec/score-compose/internal/compose"
-	"github.com/score-spec/score-compose/internal/patching"
-	"github.com/score-spec/score-compose/internal/project"
-	"github.com/score-spec/score-compose/internal/provisioners"
-	"github.com/score-spec/score-compose/internal/provisioners/envprov"
-	provloader "github.com/score-spec/score-compose/internal/provisioners/loader"
+	"github.com/appxecute/score-ecs/internal/compose"
+	"github.com/appxecute/score-ecs/internal/patching"
+	"github.com/appxecute/score-ecs/internal/project"
+	"github.com/appxecute/score-ecs/internal/provisioners"
+	"github.com/appxecute/score-ecs/internal/provisioners/envprov"
+	provloader "github.com/appxecute/score-ecs/internal/provisioners/loader"
 )
 
 const (

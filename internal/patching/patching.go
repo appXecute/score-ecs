@@ -30,7 +30,7 @@ import (
 	"github.com/tidwall/sjson"
 	"gopkg.in/yaml.v3"
 
-	"github.com/score-spec/score-compose/internal/project"
+	"github.com/appxecute/score-ecs/internal/project"
 )
 
 type PatchOperation struct {

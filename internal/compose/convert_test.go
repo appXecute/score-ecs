@@ -26,9 +26,9 @@ import (
 	score "github.com/score-spec/score-go/types"
 	assert "github.com/stretchr/testify/assert"
 
-	"github.com/score-spec/score-compose/internal/project"
-	"github.com/score-spec/score-compose/internal/provisioners/envprov"
-	"github.com/score-spec/score-compose/internal/util"
+	"github.com/appxecute/score-ecs/internal/project"
+	"github.com/appxecute/score-ecs/internal/provisioners/envprov"
+	"github.com/appxecute/score-ecs/internal/util"
 )
 
 func TestScoreConvert(t *testing.T) {

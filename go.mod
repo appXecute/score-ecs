@@ -1,4 +1,4 @@
-module github.com/score-spec/score-compose
+module github.com/appxecute/score-ecs
 
 go 1.24.1
 

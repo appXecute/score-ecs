@@ -30,8 +30,8 @@ import (
 	"github.com/score-spec/score-go/framework"
 	"gopkg.in/yaml.v3"
 
-	"github.com/score-spec/score-compose/internal/provisioners"
-	"github.com/score-spec/score-compose/internal/util"
+	"github.com/appxecute/score-ecs/internal/provisioners"
+	"github.com/appxecute/score-ecs/internal/util"
 )
 
 // Provisioner is the decoded template provisioner.

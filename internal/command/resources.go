@@ -25,8 +25,8 @@ import (
 	"github.com/score-spec/score-go/framework"
 	"github.com/spf13/cobra"
 
-	"github.com/score-spec/score-compose/internal/project"
-	"github.com/score-spec/score-compose/internal/util"
+	"github.com/appxecute/score-ecs/internal/project"
+	"github.com/appxecute/score-ecs/internal/util"
 )
 
 const (

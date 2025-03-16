@@ -34,8 +34,8 @@ import (
 	score "github.com/score-spec/score-go/types"
 	"gopkg.in/yaml.v3"
 
-	"github.com/score-spec/score-compose/internal/project"
-	"github.com/score-spec/score-compose/internal/util"
+	"github.com/appxecute/score-ecs/internal/project"
+	"github.com/appxecute/score-ecs/internal/util"
 )
 
 // ConvertSpec converts SCORE specification into docker-compose configuration.

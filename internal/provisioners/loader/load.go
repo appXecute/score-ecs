@@ -30,9 +30,9 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	"github.com/score-spec/score-compose/internal/provisioners"
-	"github.com/score-spec/score-compose/internal/provisioners/cmdprov"
-	"github.com/score-spec/score-compose/internal/provisioners/templateprov"
+	"github.com/appxecute/score-ecs/internal/provisioners"
+	"github.com/appxecute/score-ecs/internal/provisioners/cmdprov"
+	"github.com/appxecute/score-ecs/internal/provisioners/templateprov"
 )
 
 const DefaultSuffix = ".provisioners.yaml"

@@ -29,8 +29,8 @@ import (
 	"github.com/score-spec/score-go/framework"
 	score "github.com/score-spec/score-go/types"
 
-	"github.com/score-spec/score-compose/internal/project"
-	"github.com/score-spec/score-compose/internal/util"
+	"github.com/appxecute/score-ecs/internal/project"
+	"github.com/appxecute/score-ecs/internal/util"
 )
 
 // Input is the set of thins passed to the provisioner implementation. It provides context, previous state, and shared

@@ -11,7 +11,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/score-spec/score-compose/internal/command"
+	"github.com/appxecute/score-ecs/internal/command"
 )
 
 func main() {

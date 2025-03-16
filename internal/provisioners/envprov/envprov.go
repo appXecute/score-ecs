@@ -24,8 +24,8 @@ import (
 
 	"github.com/score-spec/score-go/framework"
 
-	"github.com/score-spec/score-compose/internal/provisioners"
-	"github.com/score-spec/score-compose/internal/util"
+	"github.com/appxecute/score-ecs/internal/provisioners"
+	"github.com/appxecute/score-ecs/internal/util"
 )
 
 // The Provisioner is an environment provision which returns a suitable expression for accessing an environment variable

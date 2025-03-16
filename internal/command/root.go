@@ -20,8 +20,8 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/score-spec/score-compose/internal/logging"
-	"github.com/score-spec/score-compose/internal/version"
+	"github.com/appxecute/score-ecs/internal/logging"
+	"github.com/appxecute/score-ecs/internal/version"
 )
 
 var (

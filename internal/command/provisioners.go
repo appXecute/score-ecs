@@ -23,10 +23,10 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/score-spec/score-compose/internal/project"
-	"github.com/score-spec/score-compose/internal/provisioners"
-	"github.com/score-spec/score-compose/internal/provisioners/loader"
-	"github.com/score-spec/score-compose/internal/util"
+	"github.com/appxecute/score-ecs/internal/project"
+	"github.com/appxecute/score-ecs/internal/provisioners"
+	"github.com/appxecute/score-ecs/internal/provisioners/loader"
+	"github.com/appxecute/score-ecs/internal/util"
 )
 
 var (

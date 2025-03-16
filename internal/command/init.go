@@ -27,9 +27,9 @@ import (
 	"github.com/score-spec/score-go/uriget"
 	"github.com/spf13/cobra"
 
-	"github.com/score-spec/score-compose/internal/patching"
-	"github.com/score-spec/score-compose/internal/project"
-	"github.com/score-spec/score-compose/internal/provisioners/loader"
+	"github.com/appxecute/score-ecs/internal/patching"
+	"github.com/appxecute/score-ecs/internal/project"
+	"github.com/appxecute/score-ecs/internal/provisioners/loader"
 )
 
 const (

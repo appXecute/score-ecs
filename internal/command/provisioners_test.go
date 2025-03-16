@@ -22,7 +22,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/score-spec/score-compose/internal/provisioners/loader"
+	"github.com/appxecute/score-ecs/internal/provisioners/loader"
 	"github.com/stretchr/testify/assert"
 )
 

@@ -30,7 +30,7 @@ import (
 	"github.com/score-spec/score-go/framework"
 	"gopkg.in/yaml.v3"
 
-	"github.com/score-spec/score-compose/internal/provisioners"
+	"github.com/appxecute/score-ecs/internal/provisioners"
 )
 
 type Provisioner struct {

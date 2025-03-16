@@ -35,11 +35,11 @@ import (
 	schema "github.com/score-spec/score-go/schema"
 	score "github.com/score-spec/score-go/types"
 
-	"github.com/score-spec/score-compose/internal/compose"
-	"github.com/score-spec/score-compose/internal/project"
-	"github.com/score-spec/score-compose/internal/provisioners"
-	"github.com/score-spec/score-compose/internal/provisioners/envprov"
-	"github.com/score-spec/score-compose/internal/util"
+	"github.com/appxecute/score-ecs/internal/compose"
+	"github.com/appxecute/score-ecs/internal/project"
+	"github.com/appxecute/score-ecs/internal/provisioners"
+	"github.com/appxecute/score-ecs/internal/provisioners/envprov"
+	"github.com/appxecute/score-ecs/internal/util"
 )
 
 const (

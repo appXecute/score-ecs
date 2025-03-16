@@ -21,7 +21,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/score-spec/score-compose/internal/provisioners"
+	"github.com/appxecute/score-ecs/internal/provisioners"
 )
 
 func TestProvisioner(t *testing.T) {
