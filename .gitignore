@@ -1,6 +1,9 @@
 # VS Code workspace configuration
 .vscode/
 
+# Jetbrains
+.idea/
+
 # Binaries for programs and plugins
 *.exe
 *.exe~
