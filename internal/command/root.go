@@ -26,8 +26,8 @@ import (
 
 var (
 	rootCmd = &cobra.Command{
-		Use:   "score-compose",
-		Short: "SCORE to docker-compose translator",
+		Use:   "score-ecs",
+		Short: "SCORE to AWS ECS based CDK translator",
 		Long: `SCORE is a specification for defining environment agnostic configuration for cloud based workloads.
 This tool produces a docker-compose configuration file from the SCORE specification.
 Complete documentation is available at https://score.dev`,
