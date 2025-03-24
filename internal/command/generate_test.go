@@ -36,27 +36,27 @@ manifest. All resources and links between Workloads will be resolved and provisi
 By default this command looks for score.yaml in the current directory, but can take explicit file names as positional
 arguments.
 
-"score-compose init" MUST be run first. An error will be thrown if the project directory is not present.
+"score-ecs init" MUST be run first. An error will be thrown if the project directory is not present.
 
 Usage:
-  score-compose generate [flags]
+  score-ecs generate [flags]
 
 Examples:
 
   # Specify Score files
-  score-compose generate score.yaml *.score.yaml
+  score-ecs generate score.yaml *.score.yaml
 
   # Regenerate without adding new score files
-  score-compose generate
+  score-ecs generate
 
   # Provide overrides when one score file is provided
-  score-compose generate score.yaml --override-file=./overrides.score.yaml --override-property=metadata.key=value
+  score-ecs generate score.yaml --override-file=./overrides.score.yaml --override-property=metadata.key=value
 
   # Publish a port exposed by a workload for local testing
-  score-compose generate score.yaml --publish 8080:my-workload:80
+  score-ecs generate score.yaml --publish 8080:my-workload:80
 
   # Publish a port from a resource host and port for local testing, the middle expression is RESOURCE_ID.OUTPUT_KEY
-  score-compose generate score.yaml --publish 5432:postgres#my-workload.db.host:5432
+  score-ecs generate score.yaml --publish 5432:postgres#my-workload.db.host:5432
 
 Flags:
       --build stringArray               An optional build context to use for the given container --build=container=./dir or --build=container={"context":"./dir"}
@@ -97,7 +97,7 @@ func changeToTempDir(t *testing.T) string {
 func TestGenerateWithoutInit(t *testing.T) {
 	_ = changeToTempDir(t)
 	stdout, _, err := executeAndResetCommand(context.Background(), rootCmd, []string{"generate"})
-	assert.EqualError(t, err, "state directory does not exist, please run \"score-compose init\" first")
+	assert.EqualError(t, err, "state directory does not exist, please run \"score-ecs init\" first")
 	assert.Equal(t, "", stdout)
 }
 

@@ -61,24 +61,24 @@ manifest. All resources and links between Workloads will be resolved and provisi
 By default this command looks for score.yaml in the current directory, but can take explicit file names as positional
 arguments.
 
-"score-compose init" MUST be run first. An error will be thrown if the project directory is not present.
+"score-ecs init" MUST be run first. An error will be thrown if the project directory is not present.
 
 `,
 	Example: `
   # Specify Score files
-  score-compose generate score.yaml *.score.yaml
+  score-ecs generate score.yaml *.score.yaml
 
   # Regenerate without adding new score files
-  score-compose generate
+  score-ecs generate
 
   # Provide overrides when one score file is provided
-  score-compose generate score.yaml --override-file=./overrides.score.yaml --override-property=metadata.key=value
+  score-ecs generate score.yaml --override-file=./overrides.score.yaml --override-property=metadata.key=value
 
   # Publish a port exposed by a workload for local testing
-  score-compose generate score.yaml --publish 8080:my-workload:80
+  score-ecs generate score.yaml --publish 8080:my-workload:80
 
   # Publish a port from a resource host and port for local testing, the middle expression is RESOURCE_ID.OUTPUT_KEY
-  score-compose generate score.yaml --publish 5432:postgres#my-workload.db.host:5432`,
+  score-ecs generate score.yaml --publish 5432:postgres#my-workload.db.host:5432`,
 
 	// don't print the errors - we print these ourselves in main()
 	SilenceErrors: true,
@@ -136,7 +136,7 @@ arguments.
 		if err != nil {
 			return fmt.Errorf("failed to load existing state directory: %w", err)
 		} else if !ok {
-			return fmt.Errorf("state directory does not exist, please run \"score-compose init\" first")
+			return fmt.Errorf("state directory does not exist, please run \"score-ecs init\" first")
 		}
 		slog.Info(fmt.Sprintf("Loaded state directory with docker compose project '%s'", sd.State.Extras.ComposeProjectName))
 
