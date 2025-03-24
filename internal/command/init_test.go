@@ -35,10 +35,10 @@ import (
 func TestInitHelp(t *testing.T) {
 	stdout, stderr, err := executeAndResetCommand(context.Background(), rootCmd, []string{"init", "--help"})
 	assert.NoError(t, err)
-	assert.Equal(t, `The init subcommand will prepare the current directory for working with score-compose and prepare any local
+	assert.Equal(t, `The init subcommand will prepare the current directory for working with score-ecs and prepare any local
 files or configuration needed to be successful.
 
-A directory named .score-compose will be created if it doesn't exist. This file stores local state and generally should
+A directory named .score-ecs will be created if it doesn't exist. This file stores local state and generally should
 not be checked into source control. Add it to your .gitignore file if you use Git as version control.
 
 The project name will be used as a Docker compose project name when the final compose files are written. This name
@@ -55,24 +55,24 @@ Golang text/template and should output a yaml/json encoded array of patches. Eac
 showing in the logs. The template has access to '.Compose' and '.Workloads'.
 
 Usage:
-  score-compose init [flags]
+  score-ecs init [flags]
 
 Examples:
 
   # Define a score file to generate
-  score-compose init --file score2.yaml
+  score-ecs init --file score2.yaml
 
   # Or override the docker compose project name
-  score-compose init --project score-compose2
+  score-ecs init --project score-ecs2
 
   # Or disable the default score file generation if you already have a score file
-  score-compose init --no-sample
+  score-ecs init --no-sample
 
   # Optionally loading in provisoners from a remote url
-  score-compose init --provisioners https://raw.githubusercontent.com/user/repo/main/example.yaml
+  score-ecs init --provisioners https://raw.githubusercontent.com/user/repo/main/example.yaml
 
   # Optionally adding a couple of patching templates
-  score-compose init --patch-templates ./patching.tpl --patch-templates https://raw.githubusercontent.com/user/repo/main/example.tpl
+  score-ecs init --patch-templates ./patching.tpl --patch-templates https://raw.githubusercontent.com/user/repo/main/example.tpl
 
 URI Retrieval:
   The --provisioners and --patch-templates arguments support URI retrieval for pulling the contents from a URI on disk
@@ -223,9 +223,9 @@ func TestInitNominal_run_twice(t *testing.T) {
 	assert.NotEqual(t, "", strings.TrimSpace(stderr))
 
 	// check default provisioners exists and overwrite it with an empty array
-	dpf, err := os.Stat(filepath.Join(td, ".score-compose", "zz-default.provisioners.yaml"))
+	dpf, err := os.Stat(filepath.Join(td, ".score-ecs", "zz-default.provisioners.yaml"))
 	assert.NoError(t, err)
-	assert.NoError(t, os.WriteFile(filepath.Join(td, ".score-compose", dpf.Name()), []byte("[]"), 0644))
+	assert.NoError(t, os.WriteFile(filepath.Join(td, ".score-ecs", dpf.Name()), []byte("[]"), 0644))
 
 	// init again
 	stdout, stderr, err = executeAndResetCommand(context.Background(), rootCmd, []string{"init"})
@@ -234,7 +234,7 @@ func TestInitNominal_run_twice(t *testing.T) {
 	assert.NotEqual(t, "", strings.TrimSpace(stderr))
 
 	// verify that default provisioners was not overwritten again
-	dpf, err = os.Stat(filepath.Join(td, ".score-compose", dpf.Name()))
+	dpf, err = os.Stat(filepath.Join(td, ".score-ecs", dpf.Name()))
 	assert.NoError(t, err)
 	assert.Equal(t, 2, int(dpf.Size()))
 
@@ -280,7 +280,7 @@ func TestInitWithProvisioners(t *testing.T) {
 	assert.Equal(t, "", stdout)
 	assert.NotEqual(t, "", strings.TrimSpace(stderr))
 
-	provs, err := loader.LoadProvisionersFromDirectory(filepath.Join(td, ".score-compose"), loader.DefaultSuffix)
+	provs, err := loader.LoadProvisionersFromDirectory(filepath.Join(td, ".score-ecs"), loader.DefaultSuffix)
 	assert.NoError(t, err)
 	expectedProvisionerUris := []string{"template://one", "template://two"}
 	for _, expectedUri := range expectedProvisionerUris {

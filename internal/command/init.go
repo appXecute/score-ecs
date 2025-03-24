@@ -82,11 +82,11 @@ var defaultProvisionersContent string
 var initCmd = &cobra.Command{
 	Use:   "init",
 	Args:  cobra.NoArgs,
-	Short: "Initialise a new score-compose project with local state directory and score file",
-	Long: `The init subcommand will prepare the current directory for working with score-compose and prepare any local
+	Short: "Initialise a new score-ecs project with local state directory and score file",
+	Long: `The init subcommand will prepare the current directory for working with score-ecs and prepare any local
 files or configuration needed to be successful.
 
-A directory named .score-compose will be created if it doesn't exist. This file stores local state and generally should
+A directory named .score-ecs will be created if it doesn't exist. This file stores local state and generally should
 not be checked into source control. Add it to your .gitignore file if you use Git as version control.
 
 The project name will be used as a Docker compose project name when the final compose files are written. This name
@@ -104,19 +104,19 @@ showing in the logs. The template has access to '.Compose' and '.Workloads'.
 `,
 	Example: `
   # Define a score file to generate
-  score-compose init --file score2.yaml
+  score-ecs init --file score2.yaml
 
   # Or override the docker compose project name
-  score-compose init --project score-compose2
+  score-ecs init --project score-ecs2
 
   # Or disable the default score file generation if you already have a score file
-  score-compose init --no-sample
+  score-ecs init --no-sample
 
   # Optionally loading in provisoners from a remote url
-  score-compose init --provisioners https://raw.githubusercontent.com/user/repo/main/example.yaml
+  score-ecs init --provisioners https://raw.githubusercontent.com/user/repo/main/example.yaml
 
   # Optionally adding a couple of patching templates
-  score-compose init --patch-templates ./patching.tpl --patch-templates https://raw.githubusercontent.com/user/repo/main/example.tpl
+  score-ecs init --patch-templates ./patching.tpl --patch-templates https://raw.githubusercontent.com/user/repo/main/example.tpl
 
 URI Retrieval:
   The --provisioners and --patch-templates arguments support URI retrieval for pulling the contents from a URI on disk
