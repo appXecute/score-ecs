@@ -33,7 +33,7 @@ func TestResourcesHelp(t *testing.T) {
 	assert.Equal(t, `Subcommands related to provisioned resources
 
 Usage:
-  score-compose resources [command]
+  score-ecs resources [command]
 
 Available Commands:
   get-outputs Return the resource outputs
@@ -46,7 +46,7 @@ Global Flags:
       --quiet           Mute any logging output
   -v, --verbose count   Increase log verbosity and detail by specifying this flag one or more times
 
-Use "score-compose resources [command] --help" for more information about a command.
+Use "score-ecs resources [command] --help" for more information about a command.
 `, stdout)
 	assert.Equal(t, "", stderr)
 
