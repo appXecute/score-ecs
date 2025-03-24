@@ -72,7 +72,7 @@ func TestRunHelp(t *testing.T) {
 	assert.Equal(t, `(Deprecated) Translate the SCORE file to docker-compose configuration
 
 Usage:
-  score-compose run [--file=score.yaml] [--output=compose.yaml] [flags]
+  score-ecs run [--file=score.yaml] [--output=compose.yaml] [flags]
 
 Flags:
       --build string           Replaces 'image' name with compose 'build' instruction
@@ -169,8 +169,8 @@ resources:
 	assert.NoError(t, err)
 	assert.NotEqual(t, "", stdout)
 	for _, l := range []string{
-		"WARN: resources.resource-one1: 'Resource-One.default' is not directly supported in score-compose, references will be converted to environment variables\n",
-		"WARN: resources.resource-two2: 'Resource-Two.default' is not directly supported in score-compose, references will be converted to environment variables\n",
+		"WARN: resources.resource-one1: 'Resource-One.default' is not directly supported in score-ecs, references will be converted to environment variables\n",
+		"WARN: resources.resource-two2: 'Resource-Two.default' is not directly supported in score-ecs, references will be converted to environment variables\n",
 		"WARN: containers.container-one1.resources.requests: not supported - ignoring\n",
 		"WARN: containers.container-one1.resources.limits: not supported - ignoring\n",
 	} {
