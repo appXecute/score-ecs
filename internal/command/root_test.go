@@ -30,24 +30,24 @@ This tool produces a docker-compose configuration file from the SCORE specificat
 Complete documentation is available at https://score.dev
 
 Usage:
-  score-compose [command]
+  score-ecs [command]
 
 Available Commands:
-  check-version Assert that the version of score-compose matches the required constraint
+  check-version Assert that the version of score-ecs matches the required constraint
   completion    Generate the autocompletion script for the specified shell
   generate      Convert one or more Score files into a Docker compose manifest
   help          Help about any command
-  init          Initialise a new score-compose project with local state directory and score file
+  init          Initialise a new score-ecs project with local state directory and score file
   provisioners  Subcommands related to provisioners
   resources     Subcommands related to provisioned resources
 
 Flags:
-  -h, --help            help for score-compose
+  -h, --help            help for score-ecs
       --quiet           Mute any logging output
   -v, --verbose count   Increase log verbosity and detail by specifying this flag one or more times
-      --version         version for score-compose
+      --version         version for score-ecs
 
-Use "score-compose [command] --help" for more information about a command.
+Use "score-ecs [command] --help" for more information about a command.
 `, stdout)
 	assert.Equal(t, "", stderr)
 }
@@ -55,7 +55,7 @@ Use "score-compose [command] --help" for more information about a command.
 func TestRootVersion(t *testing.T) {
 	stdout, stderr, err := executeAndResetCommand(context.Background(), rootCmd, []string{"--version"})
 	assert.NoError(t, err)
-	pattern := regexp.MustCompile(`^score-compose 0.0.0 \(build: \S+, sha: \S+\)\n$`)
+	pattern := regexp.MustCompile(`^score-ecs 0.0.0 \(build: \S+, sha: \S+\)\n$`)
 	assert.Truef(t, pattern.MatchString(stdout), "%s does not match: '%s'", pattern.String(), stdout)
 	assert.Equal(t, "", stderr)
 }
@@ -63,11 +63,11 @@ func TestRootVersion(t *testing.T) {
 func TestRootCompletion(t *testing.T) {
 	stdout, stderr, err := executeAndResetCommand(context.Background(), rootCmd, []string{"completion"})
 	assert.NoError(t, err)
-	assert.Equal(t, `Generate the autocompletion script for score-compose for the specified shell.
+	assert.Equal(t, `Generate the autocompletion script for score-ecs for the specified shell.
 See each sub-command's help for details on how to use the generated script.
 
 Usage:
-  score-compose completion [command]
+  score-ecs completion [command]
 
 Available Commands:
   bash        Generate the autocompletion script for bash
@@ -82,7 +82,7 @@ Global Flags:
       --quiet           Mute any logging output
   -v, --verbose count   Increase log verbosity and detail by specifying this flag one or more times
 
-Use "score-compose completion [command] --help" for more information about a command.
+Use "score-ecs completion [command] --help" for more information about a command.
 `, stdout)
 	assert.Equal(t, "", stderr)
 
@@ -102,22 +102,22 @@ If it is not installed already, you can install it via your OS's package manager
 
 To load completions in your current shell session:
 
-	source <(score-compose completion bash)
+	source <(score-ecs completion bash)
 
 To load completions for every new session, execute once:
 
 #### Linux:
 
-	score-compose completion bash > /etc/bash_completion.d/score-compose
+	score-ecs completion bash > /etc/bash_completion.d/score-ecs
 
 #### macOS:
 
-	score-compose completion bash > $(brew --prefix)/etc/bash_completion.d/score-compose
+	score-ecs completion bash > $(brew --prefix)/etc/bash_completion.d/score-ecs
 
 You will need to start a new shell for this setup to take effect.
 
 Usage:
-  score-compose completion bash
+  score-ecs completion bash
 
 Flags:
   -h, --help              help for bash
@@ -133,7 +133,7 @@ Global Flags:
 func TestRootCompletionBash(t *testing.T) {
 	stdout, stderr, err := executeAndResetCommand(context.Background(), rootCmd, []string{"completion", "bash"})
 	assert.NoError(t, err)
-	assert.Contains(t, stdout, "# bash completion V2 for score-compose")
+	assert.Contains(t, stdout, "# bash completion V2 for score-ecs")
 	assert.Equal(t, "", stderr)
 }
 
@@ -144,16 +144,16 @@ func TestRootCompletionFishHelp(t *testing.T) {
 
 To load completions in your current shell session:
 
-	score-compose completion fish | source
+	score-ecs completion fish | source
 
 To load completions for every new session, execute once:
 
-	score-compose completion fish > ~/.config/fish/completions/score-compose.fish
+	score-ecs completion fish > ~/.config/fish/completions/score-ecs.fish
 
 You will need to start a new shell for this setup to take effect.
 
 Usage:
-  score-compose completion fish [flags]
+  score-ecs completion fish [flags]
 
 Flags:
   -h, --help              help for fish
@@ -169,7 +169,7 @@ Global Flags:
 func TestRootCompletionFish(t *testing.T) {
 	stdout, stderr, err := executeAndResetCommand(context.Background(), rootCmd, []string{"completion", "fish"})
 	assert.NoError(t, err)
-	assert.Contains(t, stdout, "# fish completion for score-compose")
+	assert.Contains(t, stdout, "# fish completion for score-ecs")
 	assert.Equal(t, "", stderr)
 }
 
@@ -185,22 +185,22 @@ to enable it.  You can execute the following once:
 
 To load completions in your current shell session:
 
-	source <(score-compose completion zsh)
+	source <(score-ecs completion zsh)
 
 To load completions for every new session, execute once:
 
 #### Linux:
 
-	score-compose completion zsh > "${fpath[1]}/_score-compose"
+	score-ecs completion zsh > "${fpath[1]}/_score-ecs"
 
 #### macOS:
 
-	score-compose completion zsh > $(brew --prefix)/share/zsh/site-functions/_score-compose
+	score-ecs completion zsh > $(brew --prefix)/share/zsh/site-functions/_score-ecs
 
 You will need to start a new shell for this setup to take effect.
 
 Usage:
-  score-compose completion zsh [flags]
+  score-ecs completion zsh [flags]
 
 Flags:
   -h, --help              help for zsh
@@ -216,7 +216,7 @@ Global Flags:
 func TestRootCompletionZsh(t *testing.T) {
 	stdout, stderr, err := executeAndResetCommand(context.Background(), rootCmd, []string{"completion", "zsh"})
 	assert.NoError(t, err)
-	assert.Contains(t, stdout, "# zsh completion for score-compose")
+	assert.Contains(t, stdout, "# zsh completion for score-ecs")
 	assert.Equal(t, "", stderr)
 }
 
@@ -227,13 +227,13 @@ func TestRootCompletionPowershellHelp(t *testing.T) {
 
 To load completions in your current shell session:
 
-	score-compose completion powershell | Out-String | Invoke-Expression
+	score-ecs completion powershell | Out-String | Invoke-Expression
 
 To load completions for every new session, add the output of the above command
 to your powershell profile.
 
 Usage:
-  score-compose completion powershell [flags]
+  score-ecs completion powershell [flags]
 
 Flags:
   -h, --help              help for powershell
@@ -249,13 +249,13 @@ Global Flags:
 func TestRootCompletionPowershell(t *testing.T) {
 	stdout, stderr, err := executeAndResetCommand(context.Background(), rootCmd, []string{"completion", "powershell"})
 	assert.NoError(t, err)
-	assert.Contains(t, stdout, "# powershell completion for score-compose")
+	assert.Contains(t, stdout, "# powershell completion for score-ecs")
 	assert.Equal(t, "", stderr)
 }
 
 func TestRootUnknown(t *testing.T) {
 	stdout, stderr, err := executeAndResetCommand(context.Background(), rootCmd, []string{"unknown"})
-	assert.EqualError(t, err, "unknown command \"unknown\" for \"score-compose\"")
+	assert.EqualError(t, err, "unknown command \"unknown\" for \"score-ecs\"")
 	assert.Equal(t, "", stdout)
 	assert.Equal(t, "", stderr)
 }

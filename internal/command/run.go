@@ -320,7 +320,7 @@ func buildLegacyProvisioners(workloadName string, state *project.State) ([]provi
 		} else if resUid.Type() == "volume" && resUid.Class() == "default" {
 			out = append(out, &legacyVolumeProvisioner{MatchResourceUid: resUid})
 		} else {
-			slog.Warn(fmt.Sprintf("resources.%s: '%s.%s' is not directly supported in score-compose, references will be converted to environment variables", resName, resUid.Type(), resUid.Class()))
+			slog.Warn(fmt.Sprintf("resources.%s: '%s.%s' is not directly supported in score-ecs, references will be converted to environment variables", resName, resUid.Type(), resUid.Class()))
 			out = append(out, envProv.GenerateSubProvisioner(resName, resUid))
 		}
 	}
