@@ -223,9 +223,9 @@ func TestInitNominal_run_twice(t *testing.T) {
 	assert.NotEqual(t, "", strings.TrimSpace(stderr))
 
 	// check default provisioners exists and overwrite it with an empty array
-	dpf, err := os.Stat(filepath.Join(td, ".score-compose", "zz-default.provisioners.yaml"))
+	dpf, err := os.Stat(filepath.Join(td, ".score-ecs", "zz-default.provisioners.yaml"))
 	assert.NoError(t, err)
-	assert.NoError(t, os.WriteFile(filepath.Join(td, ".score-compose", dpf.Name()), []byte("[]"), 0644))
+	assert.NoError(t, os.WriteFile(filepath.Join(td, ".score-ecs", dpf.Name()), []byte("[]"), 0644))
 
 	// init again
 	stdout, stderr, err = executeAndResetCommand(context.Background(), rootCmd, []string{"init"})
@@ -234,7 +234,7 @@ func TestInitNominal_run_twice(t *testing.T) {
 	assert.NotEqual(t, "", strings.TrimSpace(stderr))
 
 	// verify that default provisioners was not overwritten again
-	dpf, err = os.Stat(filepath.Join(td, ".score-compose", dpf.Name()))
+	dpf, err = os.Stat(filepath.Join(td, ".score-ecs", dpf.Name()))
 	assert.NoError(t, err)
 	assert.Equal(t, 2, int(dpf.Size()))
 
@@ -280,7 +280,7 @@ func TestInitWithProvisioners(t *testing.T) {
 	assert.Equal(t, "", stdout)
 	assert.NotEqual(t, "", strings.TrimSpace(stderr))
 
-	provs, err := loader.LoadProvisionersFromDirectory(filepath.Join(td, ".score-compose"), loader.DefaultSuffix)
+	provs, err := loader.LoadProvisionersFromDirectory(filepath.Join(td, ".score-ecs"), loader.DefaultSuffix)
 	assert.NoError(t, err)
 	expectedProvisionerUris := []string{"template://one", "template://two"}
 	for _, expectedUri := range expectedProvisionerUris {

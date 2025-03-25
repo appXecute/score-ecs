@@ -27,7 +27,7 @@ import (
 )
 
 const (
-	DefaultRelativeStateDirectory = ".score-compose"
+	DefaultRelativeStateDirectory = ".score-ecs"
 	StateFileName                 = "state.yaml"
 	MountsDirectoryName           = "mounts"
 )

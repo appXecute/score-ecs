@@ -94,13 +94,13 @@ services:
         image: busybox
         volumes:
             - type: bind
-              source: .score-compose/mounts/files/hello-world-files-0-fileA.txt
+              source: .score-ecs/mounts/files/hello-world-files-0-fileA.txt
               target: /fileA.txt
             - type: bind
-              source: .score-compose/mounts/files/hello-world-files-1-fileB.txt
+              source: .score-ecs/mounts/files/hello-world-files-1-fileB.txt
               target: /fileB.txt
             - type: bind
-              source: .score-compose/mounts/files/hello-world-files-2-fileC.bin
+              source: .score-ecs/mounts/files/hello-world-files-2-fileC.bin
               target: /fileC.bin
 `,
 		},
@@ -259,7 +259,7 @@ services:
 			rand.Reader = rand2.New(rand2.NewSource(0))
 
 			changeToDir(t, "../../examples/"+tc.subDir)
-			require.NoError(t, os.RemoveAll(".score-compose"))
+			require.NoError(t, os.RemoveAll(".score-ecs"))
 			require.NoError(t, os.RemoveAll("compose.yaml"))
 
 			args := []string{"init", "--no-sample"}

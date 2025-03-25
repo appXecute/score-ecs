@@ -360,7 +360,7 @@ services:
         image: foo
         volumes:
             - type: bind
-              source: .score-compose/mounts/files/example-files-0-blah.txt
+              source: .score-ecs/mounts/files/example-files-0-blah.txt
               target: /blah.txt
 `, string(raw))
 }
@@ -541,7 +541,7 @@ resources:
     type: thing
 `), 0644))
 
-	assert.NoError(t, os.WriteFile(".score-compose/00-custom.provisioners.yaml", []byte(`
+	assert.NoError(t, os.WriteFile(".score-ecs/00-custom.provisioners.yaml", []byte(`
 - uri: template://blah
   type: thing
   services: |
@@ -623,7 +623,7 @@ func TestInitAndGenerate_with_dependent_resources(t *testing.T) {
 	assert.Equal(t, "", stdout)
 
 	// write custom providers
-	assert.NoError(t, os.WriteFile(filepath.Join(td, ".score-compose", "00-custom.provisioners.yaml"), []byte(`
+	assert.NoError(t, os.WriteFile(filepath.Join(td, ".score-ecs", "00-custom.provisioners.yaml"), []byte(`
 - uri: template://foo
   type: foo
   outputs: |
@@ -697,7 +697,7 @@ func TestInitAndGenerateWithNetworkServicesAcrossWorkloads(t *testing.T) {
 	assert.Equal(t, "", stdout)
 
 	// write custom providers
-	assert.NoError(t, os.WriteFile(filepath.Join(td, ".score-compose", "00-custom.provisioners.yaml"), []byte(`
+	assert.NoError(t, os.WriteFile(filepath.Join(td, ".score-ecs", "00-custom.provisioners.yaml"), []byte(`
 - uri: template://default-provisioners/workload-port
   type: workload-port
   init: |
@@ -918,7 +918,7 @@ resources:
 	}, sd.State.SharedState)
 
 	// validate that the wildcard routes don't exist for /third
-	raw, err := os.ReadFile(filepath.Join(td, ".score-compose", "mounts", instanceServiceName, "nginx.conf"))
+	raw, err := os.ReadFile(filepath.Join(td, ".score-ecs", "mounts", instanceServiceName, "nginx.conf"))
 	assert.NoError(t, err)
 	assert.Contains(t, string(raw), `location ~ ^/first$`)
 	assert.Contains(t, string(raw), `location ~ ^/first/.*`)
@@ -1036,7 +1036,7 @@ func TestInitAndGenerate_with_volume_types(t *testing.T) {
 	assert.Equal(t, "", stdout)
 
 	// write custom providers
-	assert.NoError(t, os.WriteFile(filepath.Join(td, ".score-compose", "00-custom.provisioners.yaml"), []byte(`
+	assert.NoError(t, os.WriteFile(filepath.Join(td, ".score-ecs", "00-custom.provisioners.yaml"), []byte(`
 - uri: template://docker-volume
   type: volume
   outputs: |
